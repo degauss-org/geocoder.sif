@@ -1,0 +1,26 @@
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build_apptainer:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: eWaterCycle/setup-apptainer@v2
+        with:
+          apptainer-version: 1.3.3
+      - name: build the apptainer
+        run: apptainer build --force degauss-geocode.sif degauss-geocode.def
+      - name: saving sif file
+        uses: actions/upload-artifact@v4
+        with:
+          name: degauss-geocode.sif
+          overwrite: true
