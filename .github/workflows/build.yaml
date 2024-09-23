@@ -23,4 +23,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: degauss-geocode.sif
+          path: degauss-geocodes.sif
           overwrite: true
