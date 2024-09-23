@@ -1,0 +1,16 @@
+Bootstrap: docker
+From: ghcr.io/degauss-org/geocoder:3.4.0
+Stage: build
+
+%post
+    chmod -R ugo+Xr /root
+    chmod -R ugo+Xr /opt
+    chmod -R ugo+Xr /app
+    chmod ugo+rx /app/*
+    export R_LIBS_USER=/app/R
+
+%runscript
+    R_LIBS_USER=/app/R /app/entrypoint.R "$@"
+
+%help
+    DeGAUSS geocoder singularity image converted from https://github.com/degauss-org/geocoder
