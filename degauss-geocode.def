@@ -1,5 +1,5 @@
 Bootstrap: docker
-From: ghcr.io/degauss-org/geocoder:3.4.0
+From: ghcr.io/degauss-org/geocoder:3.3.0
 Stage: build
 
 %post
