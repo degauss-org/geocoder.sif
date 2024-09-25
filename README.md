@@ -5,7 +5,7 @@ This is a port of the [DeGAUSS geocoder](https://github.com/degauss-org/geocoder
 
 ## Using
 
-After singularity or apptainer are installed, pull the container from the github container registry:
+After singularity or apptainer are installed and available, pull the container from the github container registry:
 
 ```sh
 apptainer pull oras://ghcr.io/degauss-org/geocoder.sif:v3.3.0
