@@ -14,7 +14,7 @@ apptainer pull oras://ghcr.io/degauss-org/geocoder.sif:v3.3.0
 Call the container directly as an executable with an argument of the name of the csv file with an address column named `address`:
 
 ```sh
-./geocoder_v3.3.0.sif my_address_file.csv
+./geocoder.sif_v3.3.0.sif my_address_file.csv
 ```
 
 See the [DeGAUSS geocoder README](https://github.com/degauss-org/geocoder?tab=readme-ov-file#geocoder-) for details.
