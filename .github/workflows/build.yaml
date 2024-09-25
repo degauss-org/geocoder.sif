@@ -10,8 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      packages: write
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: make commit-based sif name
         run: |
           echo "sif_name=degauss-geocoder_${{ github.sha }}.sif" >> $GITHUB_ENV
