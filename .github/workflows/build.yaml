@@ -12,8 +12,15 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v2
-      - name: make versioned sif name
-        run: echo "sif_name=degauss-geocoder_${{ github.sha }}.sif" >> $GITHUB_ENV
+      - name: make commit-based sif name
+        run: |
+          echo "sif_name=degauss-geocoder_${{ github.sha }}.sif" >> $GITHUB_ENV
+          echo "sif_version=${{ github.sha }}" >> $GITHUB_ENV
+      - name: make tag-based sif name for releases and pull requests
+        if: github.event_name == "release" || github.event_name == "pull_request"
+        run: |
+          echo "sif_name=degauss-geocoder_${{ github.ref_name }}.sif" >> $GITHUB_ENV
+          echo "sif_version=${{ github.ref_name }}" >> $GITHUB_ENV
       - uses: eWaterCycle/setup-apptainer@v2
         with:
           apptainer-version: 1.3.3
@@ -28,4 +35,4 @@ jobs:
       - name: push to ghcr
         run: |
           apptainer registry login --username cole-brokamp --password ${{ secrets.GITHUB_TOKEN }} docker://ghcr.io
-          apptainer push ${{ env.sif_name }} oras://ghcr.io/${{ github.repository }}:${{ github.sha }}
+          apptainer push ${{ env.sif_name }} oras://ghcr.io/${{ github.repository }}:${{ env.sif_version }}
