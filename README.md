@@ -1,5 +1,7 @@
 # geocoder.sif <a href='https://degauss.org'><img src='https://github.com/degauss-org/degauss_hex_logo/raw/main/PNG/degauss_hex.png' align='right' height='138.5' /></a>
 
+[![.github/workflows/build.yaml](https://github.com/degauss-org/geocoder.sif/actions/workflows/build.yaml/badge.svg)](https://github.com/degauss-org/geocoder.sif/actions/workflows/build.yaml)
+
 
 This is a port of the [DeGAUSS geocoder](https://github.com/degauss-org/geocoder) Docker container to an [apptainer](https://apptainer.org/) container suitable to use with apptainer or [singularity](https://github.com/sylabs/singularity) in high performance computing environoments.
 
