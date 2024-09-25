@@ -16,7 +16,7 @@ jobs:
         run: |
           echo "sif_name=degauss-geocoder_${{ github.sha }}.sif" >> $GITHUB_ENV
           echo "sif_version=${{ github.sha }}" >> $GITHUB_ENV
-      - name: make tag-based sif name for releases
+      - name: if a release, make a tag-based sif name
         if: github.event_name == 'release'
         run: |
           echo "sif_name=degauss-geocoder_${{ github.ref_name }}.sif" >> $GITHUB_ENV
@@ -24,14 +24,8 @@ jobs:
       - uses: eWaterCycle/setup-apptainer@v2
         with:
           apptainer-version: 1.3.3
-      - name: build the apptainer
+      - name: build apptainer
         run: apptainer build --force ${{ env.sif_name }} degauss-geocode.def
-      - name: saving sif file
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ env.sif_name }}
-          path: ${{ env.sif_name }}
-          overwrite: true
       - name: push to ghcr
         run: |
           apptainer registry login --username cole-brokamp --password ${{ secrets.GITHUB_TOKEN }} docker://ghcr.io
