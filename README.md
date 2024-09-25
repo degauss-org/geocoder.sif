@@ -8,13 +8,13 @@ This is a port of the [DeGAUSS geocoder](https://github.com/degauss-org/geocoder
 After singularity or apptainer are installed, pull the container from the github container registry:
 
 ```sh
-apptainer pull oras://ghcr.io/degauss-org/geocoder.sif:3.4.0
+apptainer pull oras://ghcr.io/degauss-org/geocoder.sif:3.3.0
 ```
 
 Call the container directly as an executable with an argument of the name of the csv file with an address column named `address`:
 
 ```sh
-./degauss-geocoder_v3.4.0.sif my_address_file.csv
+./geocoder_v3.3.0.sif my_address_file.csv
 ```
 
 See the [DeGAUSS geocoder README](https://github.com/degauss-org/geocoder?tab=readme-ov-file#geocoder-) for details.
