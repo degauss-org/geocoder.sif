@@ -16,8 +16,8 @@ jobs:
         run: |
           echo "sif_name=degauss-geocoder_${{ github.sha }}.sif" >> $GITHUB_ENV
           echo "sif_version=${{ github.sha }}" >> $GITHUB_ENV
-      - name: make tag-based sif name for releases and pull requests
-        if: ${{ github.event_name }} == "release" || ${{ github.event_name }} == "pull_request"
+      - name: make tag-based sif name for releases
+        if: github.event_name == 'release'
         run: |
           echo "sif_name=degauss-geocoder_${{ github.ref_name }}.sif" >> $GITHUB_ENV
           echo "sif_version=${{ github.ref_name }}" >> $GITHUB_ENV
